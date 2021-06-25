@@ -1,4 +1,9 @@
+# Student: Grace Pham - ntp33 - Course: CS 260
+# Script Purpose: Plotting the functions to identify their growth rates using matplotlib
+
+
 import matplotlib.pyplot as plt
+
 '''
 Instruction on installing matplotlib library:
 - Open terminal
@@ -19,13 +24,11 @@ def plot_result(index_list, value_list, table_title):
 # Plot result lists of all 12 functions using pandas pivot_table
 plot_result(index_list=x_list, value_list=df.columns, table_title="Table 0")
 
-
 # f4_result line grows the fastest compared to other lines, so we exclude f4 out of the values for the plot
 # Plot the remaining result lists
 plot_result(index_list=x_list,
             value_list=['f1', 'f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12'],
             table_title="Table 1")
-
 
 # f1_result line grows the fastest compared to other lines, so we exclude f1 out of the values for the plot
 # Plot the remaining result lists
@@ -33,13 +36,11 @@ plot_result(index_list=x_list,
             value_list=['f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12'],
             table_title="Table 2")
 
-
 # f9_result line grows the fastest compared to other lines, so we exclude f9 out of the values for the plot
 # Plot the remaining result lists
 plot_result(index_list=x_list,
             value_list=['f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f10', 'f11', 'f12'],
             table_title="Table 3")
-
 
 # f3_result line grows the fastest compared to other lines, so we exclude f3 out of the values for the plot
 # Plot the remaining result lists
@@ -47,13 +48,11 @@ plot_result(index_list=x_list,
             value_list=['f2', 'f5', 'f6', 'f7', 'f8', 'f10', 'f11', 'f12'],
             table_title="Table 4")
 
-
 # f10_result line grows the fastest compared to other lines, so we exclude f10 out of the values for the plot
 # Plot the remaining result lists
 plot_result(index_list=x_list,
             value_list=['f2', 'f5', 'f6', 'f7', 'f8', 'f11', 'f12'],
             table_title="Table 5")
-
 
 # f11_result line grows the fastest compared to other lines, so we exclude f11 out of the values for the plot
 # Plot the remaining result lists

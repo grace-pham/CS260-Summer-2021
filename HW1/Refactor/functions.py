@@ -1,3 +1,6 @@
+# Student: Grace Pham - ntp33 - Course: CS 260
+# Script Purpose: Implementations of 12 functions
+
 import math
 
 

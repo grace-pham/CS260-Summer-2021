@@ -1,3 +1,8 @@
+# Student: Grace Pham - ntp33 - Course: CS 260
+# Script Purpose: Generate result lists by running 12 functions (implemented in functions.py) with the elements of x in
+# x_list as input values
+
+
 from functions import *
 
 # Create a list for x(s) to run these fx functions on
