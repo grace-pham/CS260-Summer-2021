@@ -8,32 +8,38 @@ plt.title("Table 0")
 plt.show()
 
 # f4_result line grows the fastest compared to other lines, so we exclude f4 out of the values for the plot
+# Plot the remaining result lists
 table1 = df.pivot_table(index=x_list,
                         values=['f1', 'f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']).plot()
 plt.title("Table 1")
 plt.show()
 
 # f1_result line grows the fastest compared to other lines, so we exclude f1 out of the values for the plot
+# Plot the remaining result lists
 table2 = df.pivot_table(index=x_list, values=['f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']).plot()
 plt.title("Table 2")
 plt.show()
 
 # f9_result line grows the fastest compared to other lines, so we exclude f9 out of the values for the plot
+# Plot the remaining result lists
 table3 = df.pivot_table(index=x_list, values=['f2', 'f3', 'f5', 'f6', 'f7', 'f8', 'f10', 'f11', 'f12']).plot()
 plt.title("Table 3")
 plt.show()
 
 # f3_result line grows the fastest compared to other lines, so we exclude f3 out of the values for the plot
+# Plot the remaining result lists
 table4 = df.pivot_table(index=x_list, values=['f2', 'f5', 'f6', 'f7', 'f8', 'f10', 'f11', 'f12']).plot()
 plt.title("Table 4")
 plt.show()
 
 # f10_result line grows the fastest compared to other lines, so we exclude f10 out of the values for the plot
+# Plot the remaining result lists
 table5 = df.pivot_table(index=x_list, values=['f2', 'f5', 'f6', 'f7', 'f8', 'f11', 'f12']).plot()
 plt.title("Table 5")
 plt.show()
 
 # f11_result line grows the fastest compared to other lines, so we exclude f11 out of the values for the plot
+# Plot the remaining result lists
 table6 = df.pivot_table(index=x_list, values=['f2', 'f5', 'f6', 'f7', 'f8', 'f12']).plot()
 plt.title("Table 6")
 plt.show()
