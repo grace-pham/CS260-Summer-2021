@@ -1,4 +1,10 @@
 import pandas as pd
+'''
+Instruction on installing pandas library:
+- Open terminal
+- Install pip (if not installed)
+- Run command: "pip install pandas" on terminal
+'''
 
 from results import *
 

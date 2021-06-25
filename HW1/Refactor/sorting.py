@@ -1,6 +1,12 @@
 import matplotlib.pyplot as plt
+'''
+Instruction on installing matplotlib library:
+- Open terminal
+- Install pip (if not installed)
+- Run command: "pip install matplotlib" on terminal
+'''
 
-from report import *
+from result_table import *
 
 # Plot results list using pandas pivot_table
 table = df.pivot_table(index=x_list, values=df.columns).plot()
