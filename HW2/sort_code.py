@@ -66,7 +66,7 @@ def insertion_sort(input_list):
         i += 1
 
 
-def merge_sort(input_list, start, middle, stop):
+def merge(input_list, start, middle, stop):
     aux_list = input_list
     aux_middle = middle - start
     aux_stop = stop - start
@@ -82,7 +82,22 @@ def merge_sort(input_list, start, middle, stop):
         elif aux_list[j] > aux_list[i]:
             input_list[k] = aux_list[i]
             i += 1
-        k += 1
+        else:
+            input_list[k] = aux_list[j]
+            j += 1
+
+
+def merge_sort(input_list):
+    merge_sort_helper(input_list, 0, len(input_list) - 1)
+
+
+def merge_sort_helper(input_list, start, stop):
+    if start >= stop:
+        return
+    middle = start + (stop - start) // 2
+    merge_sort_helper(input_list, start, middle)
+    merge_sort_helper(input_list, middle + 1, stop)
+    merge(input_list, start, middle, stop)
 
 
 def quick_sort(input_list):
@@ -103,5 +118,5 @@ def partition(input_list, start, stop):
         if input_list[j] <= pivot:
             swap(input_list, i, j)
             i += 1
-        j += 1
+    swap(input_list, i, stop)
     return i
