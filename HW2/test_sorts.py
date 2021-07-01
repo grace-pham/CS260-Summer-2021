@@ -58,4 +58,76 @@ def test_gnome_thousand():
 def test_gnome_fivethousand():
     check_list(sort_code.gnome, 5000)
 
+
 # Add your own tests for the new sorts below
+
+# Bubble SORT Tests
+
+def test_bubble_ten():
+    check_list(sort_code.bubble_sort, 10)
+
+
+def test_bubble_hundred():
+    check_list(sort_code.bubble_sort, 100)
+
+
+def test_bubble_thousand():
+    check_list(sort_code.bubble_sort, 1000)
+
+
+def test_bubble_fivethousand():
+    check_list(sort_code.bubble_sort, 5000)
+
+
+# Insertion SORT Tests
+
+def test_insertion_ten():
+    check_list(sort_code.insertion_sort, 10)
+
+
+def test_insertion_hundred():
+    check_list(sort_code.insertion_sort, 100)
+
+
+def test_insertion_thousand():
+    check_list(sort_code.insertion_sort, 1000)
+
+
+def test_insertion_fivethousand():
+    check_list(sort_code.insertion_sort, 5000)
+
+
+# Quick SORT Tests
+
+def test_quick_ten():
+    check_list(sort_code.quick_sort, 10)
+
+
+def test_quick_hundred():
+    check_list(sort_code.quick_sort, 100)
+
+
+def test_quick_thousand():
+    check_list(sort_code.quick_sort, 1000)
+
+
+def test_quick_fivethousand():
+    check_list(sort_code.quick_sort, 5000)
+
+
+# Merge SORT Tests
+
+def test_merge_ten():
+    check_list(sort_code.merge_sort, 10)
+
+
+def test_merge_hundred():
+    check_list(sort_code.merge_sort, 100)
+
+
+def test_merge_thousand():
+    check_list(sort_code.merge_sort, 1000)
+
+
+def test_merge_fivethousand():
+    check_list(sort_code.merge_sort, 5000)
