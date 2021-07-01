@@ -33,9 +33,14 @@ def test_a_sort(sort_name, size):
 
 if __name__ == "__main__":
     # Print out the results.
-    print("Size | Built In    |    Gnome")
+    print("Size | Built In    |    Gnome    |  BubbleSort  | InsertionSort |  MergeSort  |  QuickSort |")
     for x in range(0, 9):
-        rowTemplate = "{:4d} | {:11.5} | {:11.5f}"
+        rowTemplate = "{:4d} | {:11.5} | {:11.5f} | {:11.5f}  |  {:11.5f}  | {:11.5f} | {:11.5f}|"
         built = test_a_sort("builtin", 2 ** x)
         gnome = test_a_sort("gnome", 2 ** x)
-        print(rowTemplate.format(2 ** x, built, gnome))
+        bubble = test_a_sort("bubble_sort", 2 ** x)
+        insertion = test_a_sort("insertion_sort", 2 ** x)
+        merge = test_a_sort("merge_sort", 2 ** x)
+        quick = test_a_sort("quick_sort", 2 ** x)
+
+        print(rowTemplate.format(2 ** x, built, gnome, bubble, insertion, merge, quick))
