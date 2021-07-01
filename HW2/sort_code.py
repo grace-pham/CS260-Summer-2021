@@ -44,6 +44,17 @@ def swap(swapped_list, index_a, index_b):
     swapped_list[index_b] = temp
 
 
+def partition(input_list, start, stop):
+    pivot = input_list[stop]
+    i = start
+    for j in range(start, stop):
+        if input_list[j] <= pivot:
+            swap(input_list, i, j)
+            i += 1
+    swap(input_list, i, stop)
+    return i
+
+
 def bubble_sort(input_list):
     swapped = 1
     while swapped == 1:
@@ -68,15 +79,13 @@ def insertion_sort(input_list):
 
 def merge(input_list, start, middle, stop):
     aux_list = input_list
-    aux_middle = middle - start
-    aux_stop = stop - start
-    i = 0
-    j = aux_middle + 1
+    i = start
+    j = middle + 1
     for k in range(start, stop + 1):
-        if i > aux_middle:
+        if i > middle:
             input_list[k] = aux_list[j]
             j += 1
-        elif j > aux_stop:
+        elif j > stop:
             input_list[k] = aux_list[i]
             i += 1
         elif aux_list[j] > aux_list[i]:
@@ -87,17 +96,18 @@ def merge(input_list, start, middle, stop):
             j += 1
 
 
-def merge_sort(input_list):
-    merge_sort_helper(input_list, 0, len(input_list) - 1)
-
-
 def merge_sort_helper(input_list, start, stop):
     if start >= stop:
         return
     middle = start + (stop - start) // 2
     merge_sort_helper(input_list, start, middle)
     merge_sort_helper(input_list, middle + 1, stop)
+
     merge(input_list, start, middle, stop)
+
+
+def merge_sort(input_list):
+    merge_sort_helper(input_list, 0, len(input_list) - 1)
 
 
 def quick_sort(input_list):
