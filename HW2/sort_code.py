@@ -124,12 +124,3 @@ def quick_sort_helper(input_list, start, stop):
         quick_sort_helper(input_list, p + 1, stop)
 
 
-def partition(input_list, start, stop):
-    pivot = input_list[stop]
-    i = start
-    for j in range(start, stop):
-        if input_list[j] <= pivot:
-            swap(input_list, i, j)
-            i += 1
-    swap(input_list, i, stop)
-    return i
