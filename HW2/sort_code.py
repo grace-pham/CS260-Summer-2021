@@ -78,7 +78,10 @@ def insertion_sort(input_list):
 
 
 def merge(input_list, start, middle, stop):
-    aux_list = input_list
+    aux_list = []
+    for input_value in input_list:
+        aux_list.append(input_value)
+
     i = start
     j = middle + 1
     for k in range(start, stop + 1):
