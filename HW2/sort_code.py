@@ -127,5 +127,3 @@ def quick_sort_helper(input_list, start, stop):
         p = partition(input_list, start, stop)
         quick_sort_helper(input_list, start, p - 1)
         quick_sort_helper(input_list, p + 1, stop)
-
-
