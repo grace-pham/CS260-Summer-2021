@@ -1,0 +1,56 @@
+Student name: Grace Pham
+Course name: CS 260 - Section 804
+
+Question 1a: A
+Question 1b: B
+Question 1c: C
+Question 1d: A
+Question 1e: C
+Question 2a: A
+Question 2b: A
+Question 3a: C
+Question 3b: A
+Question 3c: B
+Question 3d: C
+Question 3e: A
+Question 4a: A
+Question 4b: C
+Question 4c: B
+Question 4d: A
+Question 4e: C
+Question 4f: A
+Question 5a: C
+Question 5b: B
+Question 5c: A
+Question 5d: A
+Question 5e: B
+Question 5f: C
+Question 6a: A
+Question 6b: B
+Question 6c: B
+Question 6d: A
+Question 6e: A
+Question 6f: B
+Question 7a: A
+Question 7b: C
+Question 7c: D
+Question 8:
+Sorting of 3 functions from the most efficient to least efficient: pow1, pow3, pow2
+
+Table of times:
+     a   b  runtime_pow1  runtime_pow2  runtime_pow3
+0   20  94      0.005420      0.064304      0.021271
+1   83  76      0.005265      0.049966      0.022292
+2   99  13      0.003783      0.011794      0.015227
+3   12  45      0.004519      0.033582      0.021116
+4   52  93      0.007476      0.075798      0.029186
+5   42  38      0.004971      0.025995      0.018084
+6   31  87      0.006493      0.057793      0.022099
+7    7  67      0.004068      0.041975      0.020286
+8   43  95      0.006506      0.063224      0.025114
+9   82  32      0.003057      0.020546      0.011994
+10  73  34      0.003682      0.020951      0.014285
+11  47  94      0.006050      0.067635      0.022416
+12  61  70      0.004858      0.044372      0.018077
+13  52  91      0.005747      0.058712      0.023476
+14  75  65      0.004454      0.042747      0.016660
