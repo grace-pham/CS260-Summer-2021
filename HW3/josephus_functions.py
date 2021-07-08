@@ -5,16 +5,56 @@ from collections import deque
 # Josephus
 # Implemented using the builtin list as the queue
 def josephus_list(n, m):
-    return []
+    Q = []
+
+    # Populate queue list
+    for i in range(n):
+        Q.append(i)
+
+    kill_list = []
+
+    i = 1
+    while not len(Q) == 0:
+        if i == m:
+            kill_position = Q.pop(0)
+            kill_list.append(kill_position)
+            i = 0
+        else:
+            skip_position = Q.pop(0)
+            Q.append(skip_position)
+
+        i += 1
+
+    return kill_list
 
 
 # Implemented using the deque object from collections
 def josephus_deque(n, m):
-    return []
+    Q = deque()
+
+    # Populate deque
+    for i in range(n):
+        Q.append(i)
+
+    kill_list = []
+
+    i = 1
+    while not len(Q) == 0:
+        if i == m:
+            kill_position = Q.popleft()
+            kill_list.append(kill_position)
+            i = 0
+        else:
+            skip_position = Q.popleft()
+            Q.append(skip_position)
+
+        i += 1
+
+    return kill_list
 
 
 # Implemented using a handmade Queue DS using the provided
-# Node clas and template
+# Node class and template
 class Node:
     def __init__(self, v, n):
         self.value = v
@@ -56,4 +96,25 @@ class Queue:
 
 # Implemented using the objects you implemented above
 def josephus_node(n, m):
-    return []
+    Q = Queue()
+
+    # Populate Queue
+    for i in range(n):
+        Q.enqueue(i)
+
+    kill_list = []
+
+    i = 1
+    while not Q.empty():
+        if i == m:
+            kill_position = Q.dequeue()
+            kill_list.append(kill_position)
+            i = 0
+        else:
+            skip_position = Q.dequeue()
+            Q.enqueue(skip_position)
+
+        i += 1
+
+    return kill_list
+
