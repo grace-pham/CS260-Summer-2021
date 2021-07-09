@@ -75,7 +75,8 @@ class Queue:
     # Return the front of the queue
     # or None if the queue is empty
     def front(self):
-        return None
+        if self.empty():
+            return None
 
     # Check if the queue is empty
     def empty(self):
