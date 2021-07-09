@@ -70,7 +70,10 @@ class Queue:
     # Do whatever you want here.
     # You will want this implemented for testing
     def __str__(self):
-        return ""
+        if self.empty():
+            return "[Empty Queue]"
+        else:
+            return str(self.head)
 
     # Return the front of the queue
     # or None if the queue is empty
