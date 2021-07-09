@@ -79,7 +79,7 @@ class Queue:
 
     # Check if the queue is empty
     def empty(self):
-        return False
+        return self.head == None
 
     # Add a new value to the end of the queue
     def enqueue(self, v):
