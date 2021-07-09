@@ -46,8 +46,7 @@ def josephus_deque(n, m):
         else:
             skip_position = Q.popleft()
             Q.append(skip_position)
-
-        i += 1
+            start_position += 1
 
     return kill_list
 
