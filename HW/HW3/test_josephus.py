@@ -1,6 +1,5 @@
 # Mark Boady CS 260 - Drexel University 2020
 import josephus_functions
-import pytest
 
 
 # Known Answers
