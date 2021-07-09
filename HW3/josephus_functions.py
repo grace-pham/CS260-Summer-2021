@@ -13,17 +13,16 @@ def josephus_list(n, m):
 
     kill_list = []
 
-    i = 1
+    start_position = 1
     while not len(Q) == 0:
-        if i == m:
+        if start_position == m:
             kill_position = Q.pop(0)
             kill_list.append(kill_position)
-            i = 0
+            start_position = 1
         else:
             skip_position = Q.pop(0)
             Q.append(skip_position)
-
-        i += 1
+            start_position += 1
 
     return kill_list
 
@@ -38,12 +37,12 @@ def josephus_deque(n, m):
 
     kill_list = []
 
-    i = 1
+    start_position = 1
     while not len(Q) == 0:
-        if i == m:
+        if start_position == m:
             kill_position = Q.popleft()
             kill_list.append(kill_position)
-            i = 0
+            start_position = 1
         else:
             skip_position = Q.popleft()
             Q.append(skip_position)
@@ -104,17 +103,16 @@ def josephus_node(n, m):
 
     kill_list = []
 
-    i = 1
+    start_position = 1
     while not Q.empty():
-        if i == m:
+        if start_position == m:
             kill_position = Q.dequeue()
             kill_list.append(kill_position)
-            i = 0
+            start_position = 1
         else:
             skip_position = Q.dequeue()
             Q.enqueue(skip_position)
-
-        i += 1
+            start_position += 1
 
     return kill_list
 
