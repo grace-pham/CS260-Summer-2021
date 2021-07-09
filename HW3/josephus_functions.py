@@ -85,13 +85,25 @@ class Queue:
 
     # Add a new value to the end of the queue
     def enqueue(self, v):
-        return
+        new_node = Node(v, None)
+        if self.tail == None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
 
     # Remove the first element from the queue
     # return the value you removed
     # If the queue is empty, return None and do nothing
     def dequeue(self):
-        return None
+        if self.empty():
+            return None
+        v = self.head.value
+        self.head = self.head.next
+        if self.empty():
+            self.tail = None
+        return v
 
 
 # Implemented using the objects you implemented above
@@ -116,4 +128,3 @@ def josephus_node(n, m):
             start_position += 1
 
     return kill_list
-
