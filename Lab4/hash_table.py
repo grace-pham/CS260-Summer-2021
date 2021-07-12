@@ -7,5 +7,3 @@ def hash(word, size):
 
     return total % size
 
-if __name__=="__main__":
-    print(hash("dog", 20))
