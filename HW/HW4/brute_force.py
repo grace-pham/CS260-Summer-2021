@@ -31,4 +31,4 @@ if __name__ == "__main__":
         print("Student ID:", user_info[0])
         print("Password:", passwd)
         print("Number of guesses:", guesses)
-        print("Time taken to guess:", end - start)
+        print("Time taken to hack:", end - start)
