@@ -5,6 +5,8 @@ import bcrypt
 
 def brute_force(shuffle_list, digest):
     count = 0
+
+    # Generate password combinations using shuffle_list
     for x in shuffle_list:
         for y in shuffle_list:
             passwd = f'{x}{y}'.encode()
