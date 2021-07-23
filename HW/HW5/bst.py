@@ -43,15 +43,13 @@ class BST:
         return self.root
 
     def insert(self, value):
-        self.root = self.insert_value(value, \
-                                      self.root)
+        self.root = self.insert_value(value, self.root)
 
     def find(self, value):
         return self.find_value(value, self.root)
 
     def delete(self, value):
-        self.root = self.delete_value(value, \
-                                      self.root)
+        self.root = self.delete_value(value, self.root)
 
     def min(self):
         return self.find_min(self.getRoot())
@@ -71,28 +69,61 @@ class BST:
     # Recursive definition for insert
     def insert_value(self, value, mynode):
         # Implement me
-        return None
+        if mynode is None:
+            new_node = node(value)
+            return new_node
+
+        if mynode.getValue() == value:
+            pass
+        elif mynode.getValue() > value:
+            mynode.setLeft(self.insert_value(value, mynode.getLeft()))
+        else:
+            mynode.setRight(self.insert_value(value, mynode.getRight()))
+        return mynode
 
     # Search Function
     def find_value(self, value, mynode):
         # Implement Me
-        return None
+        if mynode is None:
+            return False
+        if mynode.getValue() == value:
+            return True
+        elif mynode.getValue() > value:
+            return self.find_value(value, mynode.getLeft())
+        else:
+            return self.find_value(value, mynode.getRight())
+
 
     # Display Functions
     # Inorder Walk
     def inorder_walk(self, mynode):
         # Implement Me
-        return ""
+        if mynode is None:
+            return "N"
+        else:
+            left = self.inorder_walk(mynode.getLeft())
+            right = self.inorder_walk(mynode.getRight())
+        return f'{left} {mynode} {right}'
 
     # Preorder Walk
     def preorder_walk(self, mynode):
         # Implement Me
-        return ""
+        if mynode is None:
+            return "N"
+        else:
+            left = self.preorder_walk(mynode.getLeft())
+            right = self.preorder_walk(mynode.getRight())
+        return f'{mynode} {left} {right}'
 
     # Post Order
     def postorder_walk(self, mynode):
         # Implement Me
-        return ""
+        if mynode is None:
+            return "N"
+        else:
+            left = self.postorder_walk(mynode.getLeft())
+            right = self.postorder_walk(mynode.getRight())
+        return f'{left} {right} {mynode}'
 
     # Delete From Tree
     # Recursive Definition (Works if you implement find min correctly)
@@ -137,11 +168,25 @@ class BST:
     # Find Min
     def find_min(self, mynode):
         # Implement Me
-        return 0
+        if mynode is None:
+            return None
+        if mynode.getLeft() is None:
+            return mynode.value
+        else:
+            return self.find_min(mynode.getLeft())
 
     def node_height(self, mynode):
         # Implement Me
-        return 0
+        if mynode is None:
+            return -1
+        else:
+            left = 1 + self.node_height(mynode.getLeft())
+            right = 1 + self.node_height(mynode.getRight())
+            if left >= right:
+                height = left
+            else:
+                height = right
+            return height
 
 
 if __name__ == "__main__":
