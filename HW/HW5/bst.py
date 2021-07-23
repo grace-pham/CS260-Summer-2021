@@ -86,13 +86,13 @@ class BST:
         # Implement Me
         if mynode is None:
             return False
+
         if mynode.getValue() == value:
             return True
         elif mynode.getValue() > value:
             return self.find_value(value, mynode.getLeft())
         else:
             return self.find_value(value, mynode.getRight())
-
 
     # Display Functions
     # Inorder Walk
