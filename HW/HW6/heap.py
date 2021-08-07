@@ -1,7 +1,6 @@
 # Mark Boady CS260 - Heap Homework
 
 # Finish Implementation of this Heap
-import math
 
 
 class Heap:
@@ -43,7 +42,7 @@ class Heap:
 
     # Who is index x's parent?
     def parent(self, x):
-        return math.floor((x - 1) / 2)
+        return (x - 1) // 2
 
     # Who is index x's left child?
     def left_child(self, x):
