@@ -1,6 +1,8 @@
 # Mark Boady CS260 - Heap Homework
 
 # Finish Implementation of this Heap
+import math
+
 
 class Heap:
     # Constructor - Do Not Change
@@ -28,49 +30,95 @@ class Heap:
 
     # Is the list empty? True/False
     def empty(self):
-        return True
+        if self.current_size == 0:
+            return True
+        else:
+            return False
 
     # What is the min value? Return None if empty
     def min(self):
-        return None
+        if self.empty():
+            return None
+        return self.data[0]
 
     # Who is index x's parent?
     def parent(self, x):
-        return None
+        return math.floor((x - 1) / 2)
 
     # Who is index x's left child?
     def left_child(self, x):
-        return None
+        return (x + 1) * 2 - 1
 
     # Who is index x's right child?
     def right_child(self, x):
-        return None
+        return (x + 1) * 2
 
     # Swap the values at index x and y
     def swap(self, x, y):
-        return None
+        temp = self.data[x]
+        self.data[x] = self.data[y]
+        self.data[y] = temp
 
     # Insert a new number x
     # If no space, ignore and make no changes
     def insert(self, x):
-        return None
+        if len(self.data) == self.max_size:
+            return
+        else:
+            self.data.append(x)
+            self.current_size += 1
 
     # Upheap starting at index i
     def upheap(self, i):
-        return None
+        if self.parent(i) < 0:
+            return
+        p = self.data[self.parent(i)]
+        if p <= self.data[i]:
+            return
+        self.swap(i, self.parent(i))
+        self.upheap(self.parent(i))
 
     # Delete the Min and fix heap
     def deletemin(self):
-        return None
+        self.swap(0, self.current_size - 1)
+        self.current_size = self.current_size - 1
+        self.downheap(0)
 
     # Downheap starting at index i
     def downheap(self, i):
-        return None
+        if (self.data[self.left_child(i)] == None) or (self.data[self.right_child(i)] == None):
+            return
+
+        if self.data[self.left_child(i)] != None and (self.data[self.right_child(i)] == None):
+            children = [self.data[self.left_child(i)]]
+            m = self.left_child(i)
+        elif self.data[self.left_child(i)] == None and (self.data[self.right_child(i)] != None):
+            children = [self.data[self.right_child(i)]]
+            m = self.right_child(i)
+        else:
+            children = [self.data[self.left_child(i)], self.data[self.right_child(i)]]
+            if self.data[self.left_child(i)] < self.data[self.right_child(i)]:
+                m = self.left_child(i)
+            else:
+                m = self.right_child(i)
+
+        for child in children:
+            if self.data[i] <= child:
+                pass
+            return
+
+        self.swap(i, m)
+        self.downheap(m)
 
 
 # Implement a Heapsort
 def heapsort(A):
-    return None
+    P = Heap(len(A))
+    for i in range(len(A)):
+        P.insert(A[i])
+    for i in range(len(A)):
+        A[i] = P.min()
+        P.deletemin()
 
 
 # Run the exact Experiment from the Slides
