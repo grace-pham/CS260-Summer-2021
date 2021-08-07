@@ -62,11 +62,12 @@ class Heap:
     # Insert a new number x
     # If no space, ignore and make no changes
     def insert(self, x):
-        if len(self.data) == self.max_size:
+        if self.current_size == self.max_size:
             return
         else:
-            self.data.append(x)
+            self.data[self.current_size] = x
             self.current_size += 1
+            self.upheap(self.current_size - 1)
 
     # Upheap starting at index i
     def upheap(self, i):
