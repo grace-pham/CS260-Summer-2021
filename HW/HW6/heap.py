@@ -87,27 +87,21 @@ class Heap:
 
     # Downheap starting at index i
     def downheap(self, i):
-        if (self.data[self.left_child(i)] == None) or (self.data[self.right_child(i)] == None):
+        if self.left_child(i) >= self.current_size and self.right_child(i) >= self.current_size:
+            return
+        if self.data[i] <= self.data[self.left_child(i)] and self.right_child(i) >= self.current_size:
+            return
+        if self.data[i] <= self.data[self.right_child(i)] and self.left_child(i) >= self.current_size:
+            return
+        if self.data[i] <= self.data[self.left_child(i)] and self.data[i] <= self.data[self.right_child(i)]:
             return
 
-        if self.data[self.left_child(i)] != None and (self.data[self.right_child(i)] == None):
-            children = [self.data[self.left_child(i)]]
+        if self.right_child(i) >= self.current_size:
             m = self.left_child(i)
-        elif self.data[self.left_child(i)] == None and (self.data[self.right_child(i)] != None):
-            children = [self.data[self.right_child(i)]]
+        elif self.left_child(i) >= self.current_size:
             m = self.right_child(i)
         else:
-            children = [self.data[self.left_child(i)], self.data[self.right_child(i)]]
-            if self.data[self.left_child(i)] < self.data[self.right_child(i)]:
-                m = self.left_child(i)
-            else:
-                m = self.right_child(i)
-
-        for child in children:
-            if self.data[i] <= child:
-                pass
-            return
-
+            m = self.left_child(i) if self.data[self.left_child(i)] <= self.data[self.right_child(i)] else self.right_child(i)
         self.swap(i, m)
         self.downheap(m)
 
