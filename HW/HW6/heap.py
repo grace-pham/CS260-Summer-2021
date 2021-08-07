@@ -91,8 +91,6 @@ class Heap:
             return
         if self.data[i] <= self.data[self.left_child(i)] and self.current_size <= self.right_child(i):
             return
-        if self.data[i] <= self.data[self.right_child(i)] and self.current_size <= self.left_child(i):
-            return
         if self.data[i] <= self.data[self.left_child(i)] and self.data[i] <= self.data[self.right_child(i)]:
             return
 
