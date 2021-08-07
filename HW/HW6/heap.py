@@ -63,10 +63,9 @@ class Heap:
     def insert(self, x):
         if self.current_size == self.max_size:
             return
-        else:
-            self.data[self.current_size] = x
-            self.current_size += 1
-            self.upheap(self.current_size - 1)
+        self.data[self.current_size] = x
+        self.current_size += 1
+        self.upheap(self.current_size - 1)
 
     # Upheap starting at index i
     def upheap(self, i):
