@@ -59,23 +59,22 @@ def exit_program():
 def run_program(input_file):
     while True:
         help()
-        command = input("Enter command:")
+        command = input("Enter command:\n")
         if command == "help":
             help()
         elif command == "exit":
             exit_program()
         elif command.startswith("dijkstra "):
-            if not isinstance(int(command[-1]), int):
+            x = command.split(" ")[-1]
+            if not isinstance(int(x), int):
                 print('Please enter "dijkstra x", where x must be integer')
             else:
                 G = read_graph(input_file)
-                x = int(command[-1])
-                print(dijkstra(G, x))
+                print(dijkstra(G, int(x)))
         else:
             print("Invalid command. Please enter one of the possible commands!")
 
 
 if __name__ == "__main__":
-    input_file = input("File containing graph:")
+    input_file = input("File containing graph:\n")
     run_program(input_file=input_file)
-
