@@ -99,7 +99,10 @@ def prim(G, start_node):
 
 def kruskal(G):
     T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
-    S = {}
+
+    S = []
+    for (n, n_content) in enumerate(G):
+        S.append({n})
 
     edge_to_weight = {}
     for m in range(len(G)):
@@ -122,16 +125,23 @@ def kruskal(G):
 
     for i in range(len(edges_sorted)):
         edge = edges_sorted[i]
+        edge_from = edge[0]
+        edge_to = edge[1]
+        edge_weight = edge_to_weight[edge]
 
-        if 1 == 1:  # SOMETHING HERE
-            edge_from = edge[0]
-            edge_to = edge[1]
-            edge_weight = edge_to_weight[edge]
+        if S[edge_from] != S[edge_to]:
 
             T[edge_from][edge_to] = edge_weight
             T[edge_to][edge_from] = edge_weight
 
-            S = S.union({(edge_from, edge_to)})
+            S[edge_from] = S[edge_from].union(S[edge[1]])
+            for node in S[edge_from]:
+                S[node] = S[node].union(S[edge_from])
+
+            if edge_from < edge_to:
+                print(f"Selected Edge: [{edge_from}, {edge_to}, {edge_weight}]")
+            else:
+                print(f"Selected Edge: [{edge_to}, {edge_from}, {edge_weight}]")
 
 
 def help():
@@ -158,21 +168,20 @@ def run_program(input_file):
         else:
             G = build_graph(input_file)
             if command == "kruskal":
+                print("Running Kruskal's Algorithm")
                 print(kruskal(G))
             elif command.startswith("prim "):
                 x = command.split(" ")[-1]
                 if not isinstance(int(x), int):
                     print('Please enter "prim x", where x must be integer')
                 else:
+                    print("Running Prim's Algorithm")
                     print(prim(G, int(x)))
             else:
                 print("Invalid command. Please enter one of the possible commands!")
 
 
 if __name__ == "__main__":
-    # print("Welcome to Minimum Spanning Tree Finder")
-    # input_file = input("Give the file name graph is in:\n")
-    # run_program(input_file=input_file)
-
-    G = build_graph("input1.txt")
-    print(prim(G, 5))
+    print("Welcome to Minimum Spanning Tree Finder")
+    input_file = input("Give the file name graph is in:\n")
+    run_program(input_file=input_file)
