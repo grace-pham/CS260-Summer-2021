@@ -62,7 +62,7 @@ def build_graph(input_file):
 
 
 def prim(G, start_node):
-    print(f"Starting node {start_node}")
+    print(f"Starting Node: {start_node}")
     T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
     edges = []
     U = {start_node}
@@ -83,9 +83,9 @@ def prim(G, start_node):
             U.add(min_edge_to)
             print(f"Added {min_edge_to}")
             if min_edge_from > min_edge_to:
-                print(f"Using edge [{min_edge_to}, {min_edge_from}, {min_edge_weight}]")
+                print(f"Using Edge [{min_edge_to}, {min_edge_from}, {min_edge_weight}]")
             else:
-                print(f"Using edge [{min_edge_from}, {min_edge_to}, {min_edge_weight}]")
+                print(f"Using Edge [{min_edge_from}, {min_edge_to}, {min_edge_weight}]")
 
             T[min_edge_from][min_edge_to] = min_edge_weight
             T[min_edge_to][min_edge_from] = min_edge_weight
@@ -148,7 +148,7 @@ def help():
     print("Commands:")
     print("exit or ctrl-d - Exit the program")
     print("help - prints this menu")
-    print("prim x - Runs Pim's Algorithm starting at node X. X must be an integer")
+    print("prim integer_value - Runs Prim's Algorithm starting at node given")
     print("kruskal - Runs Kruskal's algorithm")
 
 
@@ -159,7 +159,6 @@ def exit_program():
 
 def run_program(input_file):
     while True:
-        help()
         command = input("Enter command:\n")
         if command == "help":
             help()
@@ -169,14 +168,14 @@ def run_program(input_file):
             G = build_graph(input_file)
             if command == "kruskal":
                 print("Running Kruskal's Algorithm")
-                print(kruskal(G))
+                kruskal(G)
             elif command.startswith("prim "):
                 x = command.split(" ")[-1]
                 if not isinstance(int(x), int):
                     print('Please enter "prim x", where x must be integer')
                 else:
                     print("Running Prim's Algorithm")
-                    print(prim(G, int(x)))
+                    prim(G, int(x))
             else:
                 print("Invalid command. Please enter one of the possible commands!")
 
@@ -184,4 +183,5 @@ def run_program(input_file):
 if __name__ == "__main__":
     print("Welcome to Minimum Spanning Tree Finder")
     input_file = input("Give the file name graph is in:\n")
+    help()
     run_program(input_file=input_file)
