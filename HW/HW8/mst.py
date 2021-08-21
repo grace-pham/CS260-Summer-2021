@@ -104,6 +104,7 @@ def kruskal(G):
     for (n, n_content) in enumerate(G):
         S.append({n})
 
+    # Create a dictionary containing edges and their weights
     edge_to_weight = {}
     for m in range(len(G)):
         for n in range(len(G[m])):
@@ -113,6 +114,8 @@ def kruskal(G):
                 else:
                     edge_to_weight[(n, m)] = G[m][n]
 
+    # Sort edges by weights
+    # Add sorted edges to edges_sorted list
     edges = list(edge_to_weight.keys())
     weights = list(edge_to_weight.values())
     quick_sort(weights)
