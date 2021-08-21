@@ -1,6 +1,35 @@
 import heapq
 
 
+# Quicksort codes
+def swap(swapped_list, index_a, index_b):
+    temp = swapped_list[index_a]
+    swapped_list[index_a] = swapped_list[index_b]
+    swapped_list[index_b] = temp
+
+
+def partition(input_list, start, stop):
+    pivot = input_list[stop]
+    i = start
+    for j in range(start, stop):
+        if input_list[j] <= pivot:
+            swap(input_list, i, j)
+            i += 1
+    swap(input_list, i, stop)
+    return i
+
+
+def quick_sort_helper(input_list, start, stop):
+    if start < stop:
+        p = partition(input_list, start, stop)
+        quick_sort_helper(input_list, start, p - 1)
+        quick_sort_helper(input_list, p + 1, stop)
+
+
+def quick_sort(input_list):
+    quick_sort_helper(input_list, 0, len(input_list) - 1)
+
+
 def read_file(input_file):
     file = open(input_file, 'r')
     lines = file.readlines()
@@ -103,35 +132,6 @@ def kruskal(G):
             T[edge_to][edge_from] = edge_weight
 
             S = S.union({(edge_from, edge_to)})
-
-
-# Quicksort codes
-def swap(swapped_list, index_a, index_b):
-    temp = swapped_list[index_a]
-    swapped_list[index_a] = swapped_list[index_b]
-    swapped_list[index_b] = temp
-
-
-def partition(input_list, start, stop):
-    pivot = input_list[stop]
-    i = start
-    for j in range(start, stop):
-        if input_list[j] <= pivot:
-            swap(input_list, i, j)
-            i += 1
-    swap(input_list, i, stop)
-    return i
-
-
-def quick_sort_helper(input_list, start, stop):
-    if start < stop:
-        p = partition(input_list, start, stop)
-        quick_sort_helper(input_list, start, p - 1)
-        quick_sort_helper(input_list, p + 1, stop)
-
-
-def quick_sort(input_list):
-    quick_sort_helper(input_list, 0, len(input_list) - 1)
 
 
 def help():
