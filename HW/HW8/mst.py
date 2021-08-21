@@ -6,6 +6,7 @@ def read_file(input_file):
     lines = file.readlines()
     return lines
 
+
 def get_number_of_nodes(input_file):
     lines = read_file(input_file)
     number_of_nodes = int(lines[0][0])
@@ -28,6 +29,7 @@ def build_graph(input_file):
         G[first_node][second_node] = weight
         count_line += 1
     return G
+
 
 def prim(G, start_node):
     T = {float("inf") for i in range(G[1])}
@@ -72,7 +74,7 @@ def run_program(input_file):
         elif command == "exit":
             exit_program()
         else:
-            G = read_graph(input_file)
+            G = build_graph(input_file)
             if command == "kruskal":
                 print(kruskal(G))
             elif command.startswith("prim "):
@@ -90,4 +92,4 @@ if __name__ == "__main__":
     # input_file = input("Give the file name graph is in:\n")
     # run_program(input_file=input_file)
 
-    print(read_graph("input1.txt"))
+    print(build_graph("input1.txt"))
