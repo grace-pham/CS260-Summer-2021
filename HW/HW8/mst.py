@@ -27,29 +27,111 @@ def build_graph(input_file):
         weight = float(data[2])
 
         G[first_node][second_node] = weight
+        G[second_node][first_node] = weight
         count_line += 1
     return G
 
 
 def prim(G, start_node):
-    T = {float("inf") for i in range(G[1])}
+    print(f"Starting node {start_node}")
+    T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
     edges = []
     U = {start_node}
 
-    # Add Edges to Priority Queue that are adjacent to start node
     for (node, distance) in enumerate(G[start_node]):
-        heapq.heappush(edges, (distance, node))
+        if distance != float("inf"):
+            heapq.heappush(edges, (distance, (start_node, node)))
 
-    heapq.heappush(edges, G[0][start_node])
-    while U != G[1]:
-        (u, v) = (0, 0)  # ???
-        T = T.union({(u, v)})
-        U = U.union({v})
+    while len(U) != len(G):
+        min_edge = edges[0][1]
+        min_edge_weight = edges[0][0]
+        min_edge_from = min_edge[0]
+        min_edge_to = min_edge[1]
+
+        heapq.heappop(edges)
+
+        if min_edge_to not in U:
+            U.add(min_edge_to)
+            print(f"Added {min_edge_to}")
+            if min_edge_from > min_edge_to:
+                print(f"Using edge [{min_edge_to}, {min_edge_from}, {min_edge_weight}]")
+            else:
+                print(f"Using edge [{min_edge_from}, {min_edge_to}, {min_edge_weight}]")
+
+            T[min_edge_from][min_edge_to] = min_edge_weight
+            T[min_edge_to][min_edge_from] = min_edge_weight
+
+            for (node, distance) in enumerate(G[min_edge_to]):
+                if distance != float("inf") and node != min_edge_from:
+                    heapq.heappush(edges, (distance, (min_edge_to, node)))
+
     return T
 
 
 def kruskal(G):
-    pass
+    T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
+    S = {}
+
+    edge_to_weight = {}
+    for m in range(len(G)):
+        for n in range(len(G[m])):
+            if G[m][n] != float("inf"):
+                if m < G[m][n]:
+                    edge_to_weight[(m, n)] = G[m][n]
+                else:
+                    edge_to_weight[(n, m)] = G[m][n]
+
+    edges = list(edge_to_weight.keys())
+    weights = list(edge_to_weight.values())
+    quick_sort(weights)
+
+    edges_sorted = []
+    for weight in weights:
+        for edge in edges:
+            if edge_to_weight[edge] == weight:
+                edges_sorted.append(edge)
+
+    for i in range(len(edges_sorted)):
+        edge = edges_sorted[i]
+
+        if 1 == 1:  # SOMETHING HERE
+            edge_from = edge[0]
+            edge_to = edge[1]
+            edge_weight = edge_to_weight[edge]
+
+            T[edge_from][edge_to] = edge_weight
+            T[edge_to][edge_from] = edge_weight
+
+            S = S.union({(edge_from, edge_to)})
+
+
+# Quicksort codes
+def swap(swapped_list, index_a, index_b):
+    temp = swapped_list[index_a]
+    swapped_list[index_a] = swapped_list[index_b]
+    swapped_list[index_b] = temp
+
+
+def partition(input_list, start, stop):
+    pivot = input_list[stop]
+    i = start
+    for j in range(start, stop):
+        if input_list[j] <= pivot:
+            swap(input_list, i, j)
+            i += 1
+    swap(input_list, i, stop)
+    return i
+
+
+def quick_sort_helper(input_list, start, stop):
+    if start < stop:
+        p = partition(input_list, start, stop)
+        quick_sort_helper(input_list, start, p - 1)
+        quick_sort_helper(input_list, p + 1, stop)
+
+
+def quick_sort(input_list):
+    quick_sort_helper(input_list, 0, len(input_list) - 1)
 
 
 def help():
@@ -92,4 +174,5 @@ if __name__ == "__main__":
     # input_file = input("Give the file name graph is in:\n")
     # run_program(input_file=input_file)
 
-    print(build_graph("input1.txt"))
+    G = build_graph("input1.txt")
+    print(prim(G, 5))
