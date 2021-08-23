@@ -1,7 +1,7 @@
 import heapq
 
 
-# Quicksort codes
+# Quicksort
 def swap(swapped_list, index_a, index_b):
     temp = swapped_list[index_a]
     swapped_list[index_a] = swapped_list[index_b]
@@ -30,6 +30,7 @@ def quick_sort(input_list):
     quick_sort_helper(input_list, 0, len(input_list) - 1)
 
 
+# Read graph information from file
 def read_file(input_file):
     file = open(input_file, 'r')
     lines = file.readlines()
@@ -61,6 +62,7 @@ def build_graph(input_file):
     return G
 
 
+# Prim algorithm
 def prim(G, start_node):
     print(f"Starting Node: {start_node}")
     T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
@@ -97,6 +99,7 @@ def prim(G, start_node):
     return T
 
 
+# Kruskal algorithm
 def kruskal(G):
     T = [[float("inf") for i in range(len(G))] for j in range(len(G))]
 
