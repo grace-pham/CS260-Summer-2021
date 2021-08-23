@@ -150,6 +150,21 @@ def kruskal(G):
                 print(f"Selected Edge: [{edge_to}, {edge_from}, {edge_weight}]")
 
 
+# Helpers methods for running program
+def start_prim(command, G):
+    x = command.split(" ")[-1]
+    if not isinstance(int(x), int):
+        print('Please enter "prim x", where x must be integer')
+    else:
+        print("Running Prim's Algorithm")
+        prim(G, int(x))
+
+
+def start_kruskal(G):
+    print("Running Kruskal's Algorithm")
+    kruskal(G)
+
+
 def help():
     print("Commands:")
     print("exit or ctrl-d - Exit the program")
@@ -173,15 +188,9 @@ def run_program(input_file):
         else:
             G = build_graph(input_file)
             if command == "kruskal":
-                print("Running Kruskal's Algorithm")
-                kruskal(G)
+                start_kruskal(G)
             elif command.startswith("prim "):
-                x = command.split(" ")[-1]
-                if not isinstance(int(x), int):
-                    print('Please enter "prim x", where x must be integer')
-                else:
-                    print("Running Prim's Algorithm")
-                    prim(G, int(x))
+                start_prim(command, G)
             else:
                 print("Invalid command. Please enter one of the possible commands!")
 
