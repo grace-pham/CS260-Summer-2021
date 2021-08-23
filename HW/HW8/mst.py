@@ -2,49 +2,49 @@ import heapq
 
 
 # Quicksort
-def swap(swapped_list, index_a, index_b):
+def _swap(swapped_list, index_a, index_b):
     temp = swapped_list[index_a]
     swapped_list[index_a] = swapped_list[index_b]
     swapped_list[index_b] = temp
 
 
-def partition(input_list, start, stop):
+def _partition(input_list, start, stop):
     pivot = input_list[stop]
     i = start
     for j in range(start, stop):
         if input_list[j] <= pivot:
-            swap(input_list, i, j)
+            _swap(input_list, i, j)
             i += 1
-    swap(input_list, i, stop)
+    _swap(input_list, i, stop)
     return i
 
 
-def quick_sort_helper(input_list, start, stop):
+def _quick_sort_helper(input_list, start, stop):
     if start < stop:
-        p = partition(input_list, start, stop)
-        quick_sort_helper(input_list, start, p - 1)
-        quick_sort_helper(input_list, p + 1, stop)
+        p = _partition(input_list, start, stop)
+        _quick_sort_helper(input_list, start, p - 1)
+        _quick_sort_helper(input_list, p + 1, stop)
 
 
 def quick_sort(input_list):
-    quick_sort_helper(input_list, 0, len(input_list) - 1)
+    _quick_sort_helper(input_list, 0, len(input_list) - 1)
 
 
 # Read graph information from file
-def read_file(input_file):
+def _read_file(input_file):
     file = open(input_file, 'r')
     lines = file.readlines()
     return lines
 
 
 def get_number_of_nodes(input_file):
-    lines = read_file(input_file)
+    lines = _read_file(input_file)
     number_of_nodes = int(lines[0][0])
     return number_of_nodes
 
 
 def build_graph(input_file):
-    lines = read_file(input_file)
+    lines = _read_file(input_file)
     number_of_nodes = get_number_of_nodes(input_file)
     G = [[float("inf") for i in range(number_of_nodes)] for j in range(number_of_nodes)]
 
