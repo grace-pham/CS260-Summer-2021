@@ -13,7 +13,7 @@ def master_theorem():
     elif c < x:
         theta_bound = f"T(n)=Theta(n^{x})"
     else:
-        theta_bound = f"T(n)=Theta(n^{x} log2(n)^{y + 1}"
+        theta_bound = f"T(n)=Theta(n^{c} log2(n)^{y + 1})"
     return theta_bound
 
 
