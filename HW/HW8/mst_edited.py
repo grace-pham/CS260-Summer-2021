@@ -107,28 +107,27 @@ def kruskal(G):
     for (n, n_content) in enumerate(G):
         S.append({n})
 
-    # MWB: This has the same runtime as you had above
-    edgeList = []
+    edge_list = []
     for m in range(len(G)):
         for n in range(len(G[m])):
             if G[m][n] != float("inf"):
                 edge = (G[m][n], m, n)
-                edgeList.append(edge)
+                edge_list.append(edge)
 
     # Sort edges by weights
-    quick_sort(edgeList)  # MWB: Same runtime as the stuff I commented
+    quick_sort(edge_list)
 
-    for i in range(len(edgeList)):  # MWB: Loop over my array
-        edge = edgeList[i]
-        edge_from = edge[1]  # MWB: from is second
-        edge_to = edge[2]  # MWB: to is third
-        edge_weight = edge[0]  # MWB: Weight is first
+    for i in range(len(edge_list)):
+        edge = edge_list[i]
+        edge_from = edge[1]
+        edge_to = edge[2]
+        edge_weight = edge[0]
         if S[edge_from] != S[edge_to]:
 
             T[edge_from][edge_to] = edge_weight
             T[edge_to][edge_from] = edge_weight
 
-            S[edge_from] = S[edge_from].union(S[edge_to])  # MWB: You hardcoded this index :-(
+            S[edge_from] = S[edge_from].union(S[edge_to])
             for node in S[edge_from]:
                 S[node] = S[node].union(S[edge_from])
 
