@@ -3,10 +3,10 @@ import math
 print("Automated Master Theorem")
 print("Enter Formula T(n)=a*T(n/b)+n^x*(log2(n)^y)")
 
-a = int(input("Enter Value for a:"))
-b = int(input("Enter Value for b:"))
-x = int(input("Enter Value for x:"))
-y = int(input("Enter Value for y:"))
+a = int(input("Enter Value for a:\n"))
+b = int(input("Enter Value for b:\n"))
+x = int(input("Enter Value for x:\n"))
+y = int(input("Enter Value for y:\n"))
 
 
 def master_theorem():
