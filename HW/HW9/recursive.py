@@ -1,19 +1,20 @@
 import math
 
-a = int(input("Enter Value for a:"))
-b = int(input("Enter Value for b:"))
-x = int(input("Enter Value for x:"))
-y = int(input("Enter Value for y:"))
-print(f"Evaluating {a}T(n/{b})+n^{x} log2(n)^{y}")
+a = int(input("Enter Value for a:\n"))
+b = int(input("Enter Value for b:\n"))
+x = int(input("Enter Value for x:\n"))
+y = int(input("Enter Value for y:\n"))
 
 
 def T(n):
     if n <= 1:
-        return 1
+        result = 1
     else:
-        return a * T(math.floor(n / b)) + (n ** x) * math.ceil(math.log2(n) ** y)
+        result = a * T(math.floor(n / b)) + (n ** x) * math.ceil(math.log2(n) ** y)
+    return result
 
 
 if __name__ == "__main__":
-    n = int(input("Enter Value for n:"))
-    print(T(n))
+    n = int(input("Enter Value for n:\n"))
+    print(f"Evaluating {a}T(n/{b})+n^{x} log2(n)^{y}")
+    print(f"T({n})={T(n)}")
